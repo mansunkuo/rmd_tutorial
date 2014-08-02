@@ -1,0 +1,87 @@
+R Presentation
+========================================================
+author: Mansun Kuo
+date: June 22, 2014
+transition: rotate
+transition-speed: fast
+css: assets/css/rpres.css
+
+<img src="assets/img/Taiwan-R-logo.png" alt="logo" height="150" width="150">
+
+First Slide
+========================================================
+left: 40%
+
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+***
+
+1. list 1
+2. list 2
+3. list 3
+
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+
+Slide With No Title
+========================================================
+title: false
+
+No title here
+
+
+Type
+========================================================
+type: sub-section
+incremental: true
+
+
+
+Incremental Display
+========================================================
+incremental: true
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+
+Apply to individual slides
+========================================================
+class: emphasized
+
+- Hey!
+- Pay attention to this!
+
+
+Apply to spans of text
+========================================================
+
+- Hey!
+- <span class="emphasized">Pay attention to this!</span>
+- ~~this text will be blue~~
+- <small>This sentence will appear smaller.</small>
+- <big>~~This sentence will appear bigger.~~</big>
+
+
+My Exclamation
+========================================
+type: exclaim
+
+My Exclamation

@@ -1,0 +1,67 @@
+---
+title: "R Markdown Exercise"
+author: "Mansun Kuo"
+date: "July 24, 2014"
+output:
+  html_document:
+    css: assets/css/custom.css
+    fig_caption: no
+    fig_height: 5
+    fig_width: 7
+    highlight: default
+    keep_md: no
+    number_sections: no
+    theme: default
+    toc: yes
+---
+
+
+```{r}
+load("data/salary.RData")
+```
+
+## 油電業薪資近9萬，是教服業的4倍?
+
+```{r warning=FALSE, dpi=75, fig.width=10}
+a = order(salary_2013$每人每月薪資)
+salary_news = matrix(salary_2013$每人每月薪資[c(head(a,3),tail(a,3))],ncol = 6)
+colnames(salary_news) = salary_2013$行業[c(head(a,3),tail(a,3))]
+
+# Mac顯示中文需設置字型
+# http://equation85.github.io/blog/graph-font-of-r-in-mac-os-x/
+par(family='STKaiti')
+mp = barplot(salary_news) #x軸座標
+text(mp,10000,salary_news) #標註薪資
+```
+
+
+## 實質薪資倒退十五年？
+
+```{r}
+## This is R Code Chunk
+summary(salary_cpi)
+```
+
+```{r  warning=FALSE}
+real_wage = matrix(salary_cpi$real_wage,ncol=34)
+colnames(real_wage) = salary_cpi[,1]
+
+# Mac顯示中文需設置字型
+# http://equation85.github.io/blog/graph-font-of-r-in-mac-os-x/
+par(family='STKaiti')
+mp = barplot(real_wage, ylim=c(-20000,60000), col='dodgerblue4', ylab='TWD')
+
+ratio = diff(salary_cpi$real_wage)/salary_cpi$real_wage[1:33] #實質薪資成長率
+lines(mp[2:34],ratio*500000,typ='o',pch=20,lwd=3,col=2) 
+#畫上實質薪資成長率，為配合原圖的scale，乘上500000
+
+axis(4,seq(-20000,60000,10000),labels=paste(seq(-4,12,2),'%',sep = ""),col=2)
+# 加上右邊Y軸，須考慮比例
+
+legend("bottomleft",c('實質薪資','實質薪資成長率'),bty='n',
+       text.col=c('dodgerblue4','red'),
+       col=c('dodgerblue4','red'),pch=c(15,20))# 加上圖例說明
+```
+
+
+
