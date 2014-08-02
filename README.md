@@ -5,9 +5,7 @@ R markdown tutorial
 
 ## Files
 
-- **an\_introduction\_to\_r\_markdown.Rmd**: main
-- **copy\_to\_index.R**: make a copy for integration
-- **index.Rmd**: copy of an\_introduction\_to\_r\_markdown.Rmd, just for integration
+- **index.Rmd**: main
 - **r\_markdown\_exercise.Rmd**: tutorial exercise
 - **r\_presentation.Rpres**: R Presentation demo
 - **r\_tutorial\_on\_data\_science\_conference.Rproj**: project setup
