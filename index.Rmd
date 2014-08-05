@@ -11,7 +11,7 @@ subtitle: Dynamic Documents for R
 ---
 
 ```{r include=FALSE}
-load("data/salary.RData")
+data(salary, package="DSC2014Tutorial")
 ```
 
 
