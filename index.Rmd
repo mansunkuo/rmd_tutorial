@@ -610,7 +610,7 @@ whoami
 </code></pre>
 
 
-```{r engine='bash'}
+```{r engine='bash', eval = FALSE}
 whoami
 ```
 
