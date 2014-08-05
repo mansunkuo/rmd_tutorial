@@ -11,7 +11,7 @@ subtitle: Dynamic Documents for R
 ---
 
 ```{r include=FALSE}
-load("data/salary.RData")
+data(salary, package="DSC2014Tutorial")
 ```
 
 
@@ -655,6 +655,13 @@ whoami
 </code></pre>
 
 
+<<<<<<< HEAD
+=======
+```{r engine='bash', eval = FALSE}
+whoami
+```
+
+>>>>>>> FETCH_HEAD
 ## Exercise
 
 結合適當的圖表和文字敘述，
