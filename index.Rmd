@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to R Markdown"
-author: "Mansun Kuo"
-date: "`r Sys.Date()`"
+author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
+date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /></a>'
 output:
   ioslides_presentation:
     css: assets/css/ioslides.css
@@ -57,7 +57,7 @@ Local data scientists need better tool!
 
 <img src="images/research_pipeline.png" alt="research pipeline" height="500">
 
-[Roger D. Peng, Reproducible Research: Concept and Ideas p.10 on Coursera](https://www.coursera.org/course/repdata)
+[Roger D. Peng, Reproducible Research: Concepts and Ideas p.10 on Coursera](https://www.coursera.org/course/repdata)
 
 
 ## R Markdown
@@ -109,6 +109,51 @@ Local data scientists need better tool!
 ```r
 rmarkdown::render("input.Rmd")
 ```
+
+## {.flexbox .vcenter .emphasized}
+
+Let's rock with R Markdown!
+
+
+## ggvis
+
+```{r message=FALSE, echo=FALSE}
+library(knitr)
+library(ggvis)
+mtcars %>%
+    ggvis(x = ~wt, y = ~mpg) %>%
+    layer_smooths(se=TRUE, opacity := 0.5, opacity.hover := 0.75) %>% 
+    layer_points(fill = ~factor(cyl), size := 50, size.hover := 200) %>%
+    set_options(hover_duration = 250) #%>%
+#     add_tooltip(function(data){paste0("Wt: ", data$wt, "<br>", "Mpg: ", as.character(data$mpg))}, "hover")
+```
+ 
+
+```{r results='asis', echo=FALSE, message=FALSE, eval=FALSE}
+library(d3Network)
+# Load RCurl package for downloading the data
+library(RCurl)
+
+# Gather raw JSON formatted data
+URL <- "https://raw.githubusercontent.com/christophergandrud/d3Network/master/JSONdata/miserables.json"
+MisJson <- getURL(URL, ssl.verifypeer = FALSE)
+
+# Convert JSON arrays into data frames
+MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
+MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
+
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
+               Source = "source", Target = "target",
+               Value = "value", NodeID = "name",
+               Group = "group", width = 550, height = 400,
+               opacity = 0.9)
+```
+
+
+## shiny + googleVis
+
+<iframe src="http://spark.rstudio.com/mansunkuo/googleVis_shiny/"></iframe>
+
 
 
 # HTML Documents
@@ -610,10 +655,6 @@ whoami
 </code></pre>
 
 
-```{r engine='bash'}
-whoami
-```
-
 ## Exercise
 
 結合適當的圖表和文字敘述，
@@ -993,10 +1034,9 @@ This text is red
 </div>
 ```
 
-
 ```{r results='asis', echo=FALSE}
 library(whisker)
-temp = '<span class="{{color}}{{number}} ">{{color}}{{number}}</span>'
+temp = '<span class="{{color}}{{number}}">{{color}}{{number}}</span>'
 numbers = c("", "2", "3")
 colors = c("red", "blue", "green", "yellow", "gray")
 for (color in colors){
@@ -1064,7 +1104,7 @@ This is my note.
 
 <pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r results='asis', echo=FALSE}
 library(whisker)
-temp = '<span class="{{color}}{{number}} ">{{color}}{{number}}</span>'
+temp = '&#60span class="{{color}}{{number}}"&#62{{color}}{{number}}&#60/span&#62'
 numbers = c("", "2", "3")
 colors = c("red", "blue", "green", "yellow", "gray")
 for (color in colors){
@@ -1075,7 +1115,7 @@ for (color in colors){
     }
     cat("\n")
 }
-</code></pre>
+&#96;&#96;&#96;</code></pre>
 
 
 ## Some Useful HTML
@@ -1089,11 +1129,6 @@ for (color in colors){
 ```html
 <img src="assets/img/Taiwan-R-logo.png" alt="logo" height="42" width="42">
 ```
-
----
-
-<iframe src="http://spark.rstudio.com/mansunkuo/googleVis_shiny/"></iframe>
-
 
 
 
