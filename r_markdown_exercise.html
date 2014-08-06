@@ -67,7 +67,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </ul>
 </div>
 
-<pre class="r"><code>load(&quot;data/salary.RData&quot;)</code></pre>
+<pre class="r"><code>data(salary, package=&quot;DSC2014Tutorial&quot;)
+knitr::opts_chunk$set(warning = FALSE)</code></pre>
 <div id="94" class="section level2">
 <h2>油電業薪資近9萬，是教服業的4倍?</h2>
 <pre class="r"><code>a = order(salary_2013$每人每月薪資)

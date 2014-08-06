@@ -660,12 +660,16 @@ whoami
 結合適當的圖表和文字敘述，
 將從每人每月平均薪資和消費者物價指數資料中觀察到的現象完成一份完整的報告。
 
-- [新聞連結](http://news.ltn.com.tw/news/focus/paper/758561)
+- [報告範例](http://rpubs.com/mansun_kuo/24482)
 - 主題
-    - 實質薪資倒退十五年？
     - 油電業薪資近9萬，是教服業的4倍？
-
-
+    - 實質薪資倒退十五年？
+- 小提示
+    - 利用knitr::opts_chunk$set將整份報告的warning設為FALSE
+    - 繪製"油電業薪資近9萬，是教服業的4倍？"時，
+      設定dpi=75, fig.width=10
+    - 試著隱藏source code
+    
 
 
 # Deployment

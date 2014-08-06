@@ -17,12 +17,13 @@ output:
 
 
 ```{r}
-load("data/salary.RData")
+data(salary, package="DSC2014Tutorial")
+knitr::opts_chunk$set(warning = FALSE)
 ```
 
 ## 油電業薪資近9萬，是教服業的4倍?
 
-```{r warning=FALSE, dpi=75, fig.width=10}
+```{r dpi=75, fig.width=10}
 a = order(salary_2013$每人每月薪資)
 salary_news = matrix(salary_2013$每人每月薪資[c(head(a,3),tail(a,3))],ncol = 6)
 colnames(salary_news) = salary_2013$行業[c(head(a,3),tail(a,3))]
@@ -42,7 +43,7 @@ text(mp,10000,salary_news) #標註薪資
 summary(salary_cpi)
 ```
 
-```{r  warning=FALSE}
+```{r}
 real_wage = matrix(salary_cpi$real_wage,ncol=34)
 colnames(real_wage) = salary_cpi[,1]
 
