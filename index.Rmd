@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to R Markdown"
 author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
-#date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /></a>'
+date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /></a>'
 output:
   ioslides_presentation:
     css: assets/css/ioslides.css
