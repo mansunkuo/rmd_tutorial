@@ -1,5 +1,5 @@
 ---
-title: "R Markdown Exercise"
+title: "油電業薪資近9萬，是教服業的4倍?"
 author: "Mansun Kuo"
 date: "July 24, 2014"
 output:
@@ -16,12 +16,17 @@ output:
 ---
 
 
-```{r}
+```{r, echo=TRUE, message=TRUE}
+# load("data/salary.RData")
 data(salary, package="DSC2014Tutorial")
-knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = TRUE,
+                      message = TRUE)
 ```
 
-## 油電業薪資近9萬，是教服業的4倍?
+
+
+## 每人每月薪資 - Top 3 & Last 3
 
 ```{r dpi=75, fig.width=10}
 a = order(salary_2013$每人每月薪資)
@@ -35,34 +40,35 @@ mp = barplot(salary_news) #x軸座標
 text(mp,10000,salary_news) #標註薪資
 ```
 
-
-## 實質薪資倒退十五年？
-
 ```{r}
-## This is R Code Chunk
-summary(salary_cpi)
+salary_year_file = ls()[grep("[0-9]{4}$",ls())]
+salary_year = substring(salary_year_file,
+                        nchar(salary_year_file) - 3)
 ```
 
-```{r}
-real_wage = matrix(salary_cpi$real_wage,ncol=34)
-colnames(real_wage) = salary_cpi[,1]
 
-# Mac顯示中文需設置字型
-# http://equation85.github.io/blog/graph-font-of-r-in-mac-os-x/
-par(family='STKaiti')
-mp = barplot(real_wage, ylim=c(-20000,60000), col='dodgerblue4', ylab='TWD')
+從上方圖表可以清楚地看到，`r salary_year`
+年`r colnames(salary_news)[which.max(salary_news)]`每人每月薪資為
+`r salary_news[which.max(salary_news)]`元，
+是所有行業別中最高的，
+第二名`r colnames(salary_news)[length(salary_news)-1]`也有
+`r salary_news[length(salary_news)-1]`，第三名`r colnames(salary_news)[length(salary_news)-2]`較第二名少了
+`r salary_news[length(salary_news)-1]  - salary_news[length(salary_news)-2]`，但還是有
+`r salary_news[length(salary_news)-2]`元。
 
-ratio = diff(salary_cpi$real_wage)/salary_cpi$real_wage[1:33] #實質薪資成長率
-lines(mp[2:34],ratio*500000,typ='o',pch=20,lwd=3,col=2) 
-#畫上實質薪資成長率，為配合原圖的scale，乘上500000
+整體薪資水準較為不佳則是`r colnames(salary_news)[1]`
+、`r colnames(salary_news)[2]`和`r colnames(salary_news)[3]`，
+其中`r colnames(salary_news)[1]`每人每月薪資是
+`r salary_news[1]`，
+約僅有`r colnames(salary_news)[which.max(salary_news)]`的
+`r round(salary_news[1] / salary_news[length(salary_news)] * 100)`%。
 
-axis(4,seq(-20000,60000,10000),labels=paste(seq(-4,12,2),'%',sep = ""),col=2)
-# 加上右邊Y軸，須考慮比例
+## 行業別每人每月薪資總表
 
-legend("bottomleft",c('實質薪資','實質薪資成長率'),bty='n',
-       text.col=c('dodgerblue4','red'),
-       col=c('dodgerblue4','red'),pch=c(15,20))# 加上圖例說明
+```{r results='asis'}
+index = order(salary_2013$每人每月薪資, decreasing = TRUE)
+knitr::kable(salary_2013[index, c("行業", "每人每月薪資")], 
+             row.names=FALSE)
 ```
-
 
 

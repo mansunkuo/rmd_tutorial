@@ -11,6 +11,7 @@ subtitle: Dynamic Documents for R
 ---
 
 ```{r include=FALSE}
+# load("data/salary.RData")
 data(salary, package="DSC2014Tutorial")
 ```
 
@@ -222,9 +223,13 @@ output:
 
 ## Exercise
 
-使用R Studio產生一個HTML文件，調整成自己喜歡的樣式。
+使用RStudio產生一個HTML文件:
 
-<img src="images/html_default.png" alt="logo" height="450">
+- 標題為**油電業薪資近9萬，是教服業的4倍?**。
+
+- include table of contents
+
+<img src="images/html_default.png" alt="logo" height="100">
 
 
 # Markdown Basics
@@ -536,8 +541,11 @@ Content Cell  | Content Cell
 
 加上報告的段落標題
 
-- 油電業薪資近9萬，是教服業的4倍?
-- 實質薪資倒退十五年？
+- 每人每月薪資 - Top 3 & Last 3
+
+- 行業別每人每月薪資總表
+
+<img src="images/html_add_section.png" alt="logo" height="250">
 
 
 # R Code Chunks
@@ -661,11 +669,13 @@ whoami
 將從每人每月平均薪資和消費者物價指數資料中觀察到的現象完成一份完整的報告。
 
 - [報告範例](http://rpubs.com/mansun_kuo/24482)
+- [Rmd File](https://github.com/mansunkuo/rmd_tutorial/blob/master/r_markdown_exercise.Rmd)
 - 主題
     - 油電業薪資近9萬，是教服業的4倍？
     - 實質薪資倒退十五年？
 - 小提示
     - 利用knitr::opts_chunk$set將整份報告的warning設為FALSE
+      來處理中文問題
     - 繪製"油電業薪資近9萬，是教服業的4倍？"時，
       設定dpi=75, fig.width=10
     - 試著隱藏source code
@@ -1104,6 +1114,15 @@ This is my note.
 ```
 
 
+## Interactive Documents
+
+It’s possible to embed a Shiny application within a document.
+
+<div class="columns-2">
+<img src="images/shiny-cars-table.gif" alt="hack_yaml" height="400">
+<img src="images/shiny-hist-plot.gif" alt="hack_yaml" height="400">
+</div>
+
 ## About Document Content
 
 You can add R Markdown and HTML in the YAML content.
@@ -1156,11 +1175,27 @@ for (color in colors){
 <img src="assets/img/Taiwan-R-logo.png" alt="logo" height="42" width="42">
 ```
 
+## ggvis code
+
+```{r message=FALSE, echo=TRUE, fig.height=2.5}
+library(knitr)
+library(ggvis)
+mtcars %>%
+    ggvis(x = ~wt, y = ~mpg) %>%
+    layer_smooths(se=TRUE, opacity := 0.5, opacity.hover := 0.75) %>% 
+    layer_points(fill = ~factor(cyl), size := 50, size.hover := 200) %>%
+    set_options(hover_duration = 250)
+```
+
 
 
 ## References
-
+    
+- [R Markdown Cheat Sheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html)
 - [R Markdown](http://rmarkdown.rstudio.com/)
 - [knitr](http://yihui.name/knitr/)
 - [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
 - [Reproducible Research](https://www.coursera.org/course/repdata)
+- [Shiny Articles](http://shiny.rstudio.com/articles/)
+- [Slides GitHub Page](https://github.com/mansunkuo/rmd_tutorial)
+- [googleVis簡介](http://rpubs.com/mansun_kuo/15027)
