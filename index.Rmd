@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to R Markdown"
 author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
-date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /></a>'
+#date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /></a>'
 output:
   ioslides_presentation:
     css: assets/css/ioslides.css
@@ -655,13 +655,6 @@ whoami
 </code></pre>
 
 
-<<<<<<< HEAD
-=======
-```{r engine='bash', eval = FALSE}
-whoami
-```
-
->>>>>>> FETCH_HEAD
 ## Exercise
 
 結合適當的圖表和文字敘述，
@@ -1105,6 +1098,28 @@ This is my note.
 # Miscellaneous 
 ```{r Miscellaneous}
 ```
+
+
+## About Document Content
+
+You can add R Markdown and HTML in the YAML content.
+
+
+<img src="images/hack_yaml.png" alt="hack_yaml" height="350">
+
+<!--pre class="prettyprint lang-yaml"><code>
+---
+title: "An Introduction to R Markdown"
+author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
+date: '`&#114 Sys.Date()`&#60br&#62&#60br&#62&#60a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&#62&#60img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /&#62&#60/a&#62'
+output:
+  ioslides_presentation:
+    css: assets/css/ioslides.css
+    logo: assets/img/Taiwan-R-logo.png
+    widescreen: yes
+subtitle: Dynamic Documents for R
+---
+</code></pre-->
 
 
 ## Generate Markdown and HTML
