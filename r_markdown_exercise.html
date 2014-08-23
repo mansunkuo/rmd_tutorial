@@ -62,7 +62,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="TOC">
 <ul>
 <li><a href="#94">油電業薪資近9萬，是教服業的4倍?</a><ul>
-<li><a href="#---top-3-last-3">每人每月薪資 - Top 3 &amp; Last 3</a></li>
+<li><a href="#---top-3-last-3">行業別每人每月薪資 - Top 3 &amp; Last 3</a></li>
 <li><a>行業別每人每月薪資總表</a></li>
 </ul></li>
 </ul>
@@ -81,7 +81,7 @@ knitr::opts_chunk$set(warning = FALSE,
 <li><a href="http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&amp;menu_id=40&amp;news_id=35719">經濟部</a></li>
 </ul>
 <div id="---top-3-last-3" class="section level3">
-<h3>每人每月薪資 - Top 3 &amp; Last 3</h3>
+<h3>行業別每人每月薪資 - Top 3 &amp; Last 3</h3>
 <pre class="r"><code>a = order(salary_2013$每人每月薪資)
 salary_news = matrix(salary_2013$每人每月薪資[c(head(a,3),tail(a,3))],ncol = 6)
 colnames(salary_news) = salary_2013$行業[c(head(a,3),tail(a,3))]

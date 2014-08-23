@@ -166,6 +166,9 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
 
 ## Create a HTML Document
 
+Currently YAML doesn't work well with Chinese on Windows.
+Don't use Chinese title if you are a Windows guy.
+
 <div class="columns-2">
 <img src="images/create_html_1.png" alt="output_option" height="400">
 <img src="images/create_html_2.png" alt="output_option" height="375">
@@ -228,11 +231,9 @@ output:
 
 使用RStudio產生一個HTML文件:
 
-- 標題為**油電業薪資近9萬，是教服業的4倍?**。
+- 標題為**R Markdown Exercise**。
 
 - include table of contents
-
-<img src="images/html_default.png" alt="logo" height="100">
 
 
 # Markdown Basics
@@ -280,6 +281,17 @@ atx:
 
 ### Header 3
 ```
+
+
+## Exercise
+
+加上報告的段落標題
+
+- 油電業薪資近9萬，是教服業的4倍?
+
+    - 行業別每人每月薪資 - Top 3 & Last 3
+
+    - 行業別每人每月薪資總表
 
 
 ## Manual Line Breaks
@@ -332,7 +344,7 @@ Ordered List:
     + Item 3a
     + Item 3b
 
-</d>
+</div>
 
 
 ## The Four-space Rule
@@ -540,15 +552,13 @@ Content Cell  | Content Cell
 </div>
 
 
+
 ## Exercise
 
-加上報告的段落標題
+在「油電業薪資近9萬，是教服業的4倍?」標題下加上新聞連結：
 
-- 每人每月薪資 - Top 3 & Last 3
-
-- 行業別每人每月薪資總表
-
-<img src="images/html_add_section.png" alt="logo" height="250">
+- [自由時報](https://tw.news.yahoo.com/%E6%B2%B9%E9%9B%BB%E6%A5%AD%E8%96%AA%E8%B3%87%E8%BF%919%E8%90%AC-%E6%95%99%E6%9C%8D%E6%A5%AD%E7%9A%844%E5%80%8D-221333602.html)
+- [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
 
 
 # R Code Chunks
@@ -669,17 +679,14 @@ whoami
 ## Exercise
 
 結合適當的圖表和文字敘述，
-將從每人每月平均薪資和消費者物價指數資料中觀察到的現象完成一份完整的報告。
+將從行業別每人每月薪資資料中觀察到的現象完成一份完整的報告。
 
 - [報告範例](http://rpubs.com/mansun_kuo/24482)
 - [Rmd File](https://github.com/mansunkuo/rmd_tutorial/blob/master/r_markdown_exercise.Rmd)
-- 主題
-    - 油電業薪資近9萬，是教服業的4倍？
-    - 實質薪資倒退十五年？
 - 小提示
     - 利用knitr::opts_chunk$set將整份報告的warning設為FALSE
       來處理中文問題
-    - 繪製"油電業薪資近9萬，是教服業的4倍？"時，
+    - 繪製"行業別每人每月薪資 - Top 3 & Last 3"圖形時，
       設定dpi=75, fig.width=10
     - 試著隱藏source code
     
@@ -697,7 +704,7 @@ There are various way to publish your document on the web.
 - [RPubs](https://rpubs.com)
     - [RPubs](https://rpubs.com/about/getting-started)
     - [markdown::rpubsUpload](http://www.rforge.net/doc/packages/markdown/rpubsUpload.html)
-- file hosting service
+- File hosting services
     - [Dropbox](https://www.dropbox.com/help/16/en)
     - [Google Drive](https://support.google.com/drive/answer/2881970?hl=en)
 

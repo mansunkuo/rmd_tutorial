@@ -32,7 +32,7 @@ knitr::opts_chunk$set(warning = FALSE,
 - [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
 
 
-### 每人每月薪資 - Top 3 & Last 3
+### 行業別每人每月薪資 - Top 3 & Last 3
 
 ```{r dpi=75, fig.width=10}
 a = order(salary_2013$每人每月薪資)
