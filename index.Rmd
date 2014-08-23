@@ -21,12 +21,15 @@ data(salary, package="DSC2014Tutorial")
 ```
 
 - Preface
-- HTML documents
-- R Code Chunks
+- HTML Documents
 - Markdown Basics
-- R Presentation
-- ioslides
+- R Code Chunks
+- Deployment
 - Miscellaneous
+- Appendix
+    - R Presentation
+    - ioslides
+
 
 
 # Preface
@@ -49,16 +52,16 @@ data(salary, package="DSC2014Tutorial")
 </div>
 
 
-## {.flexbox .vcenter .emphasized}
-
-Local data scientists need better tool!
-
-
 ## Research Pipeline {.smaller .centered}
 
 <img src="images/research_pipeline.png" alt="research pipeline" height="500">
 
 [Roger D. Peng, Reproducible Research: Concepts and Ideas p.10 on Coursera](https://www.coursera.org/course/repdata)
+
+
+## {.flexbox .vcenter .emphasized}
+
+Local data scientists need better tool!
 
 
 ## R Markdown
@@ -703,10 +706,107 @@ There are various way to publish your document on the web.
 
 ## Exercise
 
-Deploy your slides on the web.
+Deploy your HTML document on the web.
 
 <img src="images/rpubs.png" alt="rpubs" height="400">
 
+
+# Miscellaneous 
+```{r Miscellaneous}
+```
+
+
+## Interactive Documents
+
+It’s possible to embed a Shiny application within a document.
+
+<div class="columns-2">
+<img src="images/shiny-cars-table.gif" alt="hack_yaml" height="400">
+<img src="images/shiny-hist-plot.gif" alt="hack_yaml" height="400">
+</div>
+
+
+## About Document Content
+
+You can add R Markdown and HTML in the YAML content.
+
+
+<img src="images/hack_yaml.png" alt="hack_yaml" height="350">
+
+<!--pre class="prettyprint lang-yaml"><code>
+---
+title: "An Introduction to R Markdown"
+author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
+date: '`&#114 Sys.Date()`&#60br&#62&#60br&#62&#60a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&#62&#60img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /&#62&#60/a&#62'
+output:
+  ioslides_presentation:
+    css: assets/css/ioslides.css
+    logo: assets/img/Taiwan-R-logo.png
+    widescreen: yes
+subtitle: Dynamic Documents for R
+---
+</code></pre-->
+
+
+## Generate Markdown and HTML
+
+<pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r results='asis', echo=FALSE}
+library(whisker)
+temp = '&#60span class="{{color}}{{number}}"&#62{{color}}{{number}}&#60/span&#62'
+numbers = c("", "2", "3")
+colors = c("red", "blue", "green", "yellow", "gray")
+for (color in colors){
+    cat("- ")
+    for (number in numbers){
+        out = whisker.render(temp)
+        cat(out)
+    }
+    cat("\n")
+}
+&#96;&#96;&#96;</code></pre>
+
+
+## Some Useful HTML
+
+- [iframe](http://www.w3schools.com/tags/tag_iframe.asp): displaying a web page within a web page
+```html
+<iframe src="http://twconf.data-sci.org/" height=600 width=800></iframe>
+```
+
+- [img](http://www.w3schools.com/tags/tag_img.asp): inserting images into an HTML document.
+    
+    Much easier for adjusting width and height.
+```html
+<img src="assets/img/Taiwan-R-logo.png" alt="logo" height="42" width="42">
+```
+
+## ggvis code
+
+```{r message=FALSE, echo=TRUE, fig.height=2.5}
+library(knitr)
+library(ggvis)
+mtcars %>%
+    ggvis(x = ~wt, y = ~mpg) %>%
+    layer_smooths(se=TRUE, opacity := 0.5, opacity.hover := 0.75) %>% 
+    layer_points(fill = ~factor(cyl), size := 50, size.hover := 200) %>%
+    set_options(hover_duration = 250)
+```
+
+
+
+## References
+    
+- [R Markdown Cheat Sheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html)
+- [R Markdown](http://rmarkdown.rstudio.com/)
+- [knitr](http://yihui.name/knitr/)
+- [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
+- [Reproducible Research](https://www.coursera.org/course/repdata)
+- [Shiny Articles](http://shiny.rstudio.com/articles/)
+- [Slides GitHub Page](https://github.com/mansunkuo/rmd_tutorial)
+- [googleVis簡介](http://rpubs.com/mansun_kuo/15027)
+
+
+# Appendix
 
 
 # R Presentation
@@ -856,12 +956,6 @@ My Slide
 ================================== 
 <span class="emphasized">Pay attention to this!</span>
 ```
-
-
-
-## Exercise
-
-建立一個R Presentation
 
 
 # ioslides
@@ -1102,100 +1196,3 @@ This is my note.
 </div>
 ```
 
-
-## Exercise
-
-建立一個ioslides
-
-
-
-# Miscellaneous 
-```{r Miscellaneous}
-```
-
-
-## Interactive Documents
-
-It’s possible to embed a Shiny application within a document.
-
-<div class="columns-2">
-<img src="images/shiny-cars-table.gif" alt="hack_yaml" height="400">
-<img src="images/shiny-hist-plot.gif" alt="hack_yaml" height="400">
-</div>
-
-## About Document Content
-
-You can add R Markdown and HTML in the YAML content.
-
-
-<img src="images/hack_yaml.png" alt="hack_yaml" height="350">
-
-<!--pre class="prettyprint lang-yaml"><code>
----
-title: "An Introduction to R Markdown"
-author: "[Mansun Kuo](https://www.linkedin.com/pub/mansun-kuo/82/3b4/344)"
-date: '`&#114 Sys.Date()`&#60br&#62&#60br&#62&#60a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&#62&#60img alt="創用 CC 授權條款" style="border-width:0" src="images/by-nc-sa-4.0-88x31.png" /&#62&#60/a&#62'
-output:
-  ioslides_presentation:
-    css: assets/css/ioslides.css
-    logo: assets/img/Taiwan-R-logo.png
-    widescreen: yes
-subtitle: Dynamic Documents for R
----
-</code></pre-->
-
-
-## Generate Markdown and HTML
-
-<pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r results='asis', echo=FALSE}
-library(whisker)
-temp = '&#60span class="{{color}}{{number}}"&#62{{color}}{{number}}&#60/span&#62'
-numbers = c("", "2", "3")
-colors = c("red", "blue", "green", "yellow", "gray")
-for (color in colors){
-    cat("- ")
-    for (number in numbers){
-        out = whisker.render(temp)
-        cat(out)
-    }
-    cat("\n")
-}
-&#96;&#96;&#96;</code></pre>
-
-
-## Some Useful HTML
-
-- [iframe](http://www.w3schools.com/tags/tag_iframe.asp): 鑲嵌其他網頁
-```html
-<iframe src="http://twconf.data-sci.org/" height=600 width=800></iframe>
-```
-
-- [img](http://www.w3schools.com/tags/tag_img.asp): 插入圖片，較容易調整長寬
-```html
-<img src="assets/img/Taiwan-R-logo.png" alt="logo" height="42" width="42">
-```
-
-## ggvis code
-
-```{r message=FALSE, echo=TRUE, fig.height=2.5}
-library(knitr)
-library(ggvis)
-mtcars %>%
-    ggvis(x = ~wt, y = ~mpg) %>%
-    layer_smooths(se=TRUE, opacity := 0.5, opacity.hover := 0.75) %>% 
-    layer_points(fill = ~factor(cyl), size := 50, size.hover := 200) %>%
-    set_options(hover_duration = 250)
-```
-
-
-
-## References
-    
-- [R Markdown Cheat Sheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html)
-- [R Markdown](http://rmarkdown.rstudio.com/)
-- [knitr](http://yihui.name/knitr/)
-- [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
-- [Reproducible Research](https://www.coursera.org/course/repdata)
-- [Shiny Articles](http://shiny.rstudio.com/articles/)
-- [Slides GitHub Page](https://github.com/mansunkuo/rmd_tutorial)
-- [googleVis簡介](http://rpubs.com/mansun_kuo/15027)

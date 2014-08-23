@@ -1,10 +1,9 @@
 ---
-title: "油電業薪資近9萬，是教服業的4倍?"
+title: "R Markdown Exercise"
 author: "Mansun Kuo"
 date: "July 24, 2014"
 output:
   html_document:
-    css: assets/css/custom.css
     fig_caption: no
     fig_height: 5
     fig_width: 7
@@ -16,7 +15,7 @@ output:
 ---
 
 
-```{r, echo=TRUE, message=TRUE}
+```{r, include=TRUE}
 # load("data/salary.RData")
 data(salary, package="DSC2014Tutorial")
 knitr::opts_chunk$set(warning = FALSE,
@@ -25,8 +24,15 @@ knitr::opts_chunk$set(warning = FALSE,
 ```
 
 
+## 油電業薪資近9萬，是教服業的4倍?
 
-## 每人每月薪資 - Top 3 & Last 3
+新聞連結：
+
+- [自由時報](https://tw.news.yahoo.com/%E6%B2%B9%E9%9B%BB%E6%A5%AD%E8%96%AA%E8%B3%87%E8%BF%919%E8%90%AC-%E6%95%99%E6%9C%8D%E6%A5%AD%E7%9A%844%E5%80%8D-221333602.html)
+- [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
+
+
+### 每人每月薪資 - Top 3 & Last 3
 
 ```{r dpi=75, fig.width=10}
 a = order(salary_2013$每人每月薪資)
@@ -63,7 +69,8 @@ salary_year = substring(salary_year_file,
 約僅有`r colnames(salary_news)[which.max(salary_news)]`的
 `r round(salary_news[1] / salary_news[length(salary_news)] * 100)`%。
 
-## 行業別每人每月薪資總表
+
+### 行業別每人每月薪資總表
 
 ```{r results='asis'}
 index = order(salary_2013$每人每月薪資, decreasing = TRUE)
