@@ -18,7 +18,7 @@ output:
 ```{r, include=TRUE}
 # load("data/salary.RData")
 data(salary, package="DSC2014Tutorial")
-knitr::opts_chunk$set(warning = FALSE,
+knitr::opts_chunk$set(warning = TRUE,
                       echo = TRUE,
                       message = TRUE)
 ```
