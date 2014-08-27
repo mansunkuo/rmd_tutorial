@@ -52,6 +52,11 @@ data(salary, package="DSC2014Tutorial")
 </div>
 
 
+## {.flexbox .vcenter .emphasized}
+
+Local data scientists need better tool!
+
+
 ## Research Pipeline {.smaller .centered}
 
 <img src="images/research_pipeline.png" alt="research pipeline" height="500">
@@ -59,12 +64,9 @@ data(salary, package="DSC2014Tutorial")
 [Roger D. Peng, Reproducible Research: Concepts and Ideas p.10 on Coursera](https://www.coursera.org/course/repdata)
 
 
-## {.flexbox .vcenter .emphasized}
-
-Local data scientists need better tool!
-
-
 ## R Markdown
+
+A convenient tool to generate reproducible document.
 
 - [Markdown](http://daringfireball.net/projects/markdown/basics)
     - Remove HTML tag for higher readibility.
@@ -72,7 +74,9 @@ Local data scientists need better tool!
 - R markdown
     - Markdown + embedded R code chunks
     - Rmd -> md -> html(docx, pdf)
-    - Literate Programming
+- Why R Markdown
+    - Consolidate your code and document into single file.
+    - Easy for version control.
 
 
 ## Version
@@ -83,11 +87,10 @@ Local data scientists need better tool!
     - docx and pdf
     - slides with ioslides and Beamer
     - embedded shiny apps
-- keep using R Markdown v1
+- keep using R Markdown v1:
 
-```html
-<-- rmarkdown v1 -->
-```
+<pre class = 'prettyprint lang-html'>&lt;!-- rmarkdown v1 --&gt;</pre>
+
 
 
 ## Installing R Markdown
@@ -285,14 +288,15 @@ atx:
 
 ## Exercise
 
-加上報告的段落標題
+加上報告的段落標題：
 
-- 油電業薪資近9萬，是教服業的4倍?
+```html
+## 油電業薪資近9萬，是教服業的4倍?
 
-    - 行業別每人每月薪資 - Top 3 & Last 3
+### 行業別每人每月薪資 - Top 3 & Last 3
 
-    - 行業別每人每月薪資總表
-
+### 行業別每人每月薪資總表
+```
 
 ## Manual Line Breaks
 
@@ -389,35 +393,6 @@ Subsequent paragraphs must be preceded by a blank line and indented four spaces 
 
 </div>
 
-## R Code Chunks
-
-R code will be evaluated and printed
-
-
-<!--pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r}-->
-<pre class="markdown"><code>&#96;&#96;&#96;{r}
-summary(cars$dist)
-&#96;&#96;&#96;
-</code></pre>
-
-
-```{r}
-summary(cars$dist)
-```
-
-
-## Inline R Code
-
-
-![Markdown Inline](images/markdownInline.png)
-
-
-<br>
-
-```r
-I counted `r 1+1` red trucks on the highway.
-```
-
 
 ## Links
 
@@ -475,6 +450,22 @@ A plain http address or add a link to a phrase.
 
 </div>
 
+
+
+## Exercise
+
+在「油電業薪資近9萬，是教服業的4倍?」標題下加上新聞來源連結的Lists：
+
+- [自由時報](https://tw.news.yahoo.com/%E6%B2%B9%E9%9B%BB%E6%A5%AD%E8%96%AA%E8%B3%87%E8%BF%919%E8%90%AC-%E6%95%99%E6%9C%8D%E6%A5%AD%E7%9A%844%E5%80%8D-221333602.html)
+- [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
+
+
+```html
+新聞連結：
+
+- [自由時報](https://tw.news.yahoo.com/%E6%B2%B9%E9%9B%BB%E6%A5%AD%E8%96%AA%E8%B3%87%E8%BF%919%E8%90%AC-%E6%95%99%E6%9C%8D%E6%A5%AD%E7%9A%844%E5%80%8D-221333602.html)
+- [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
+```
 
 
 ## Blockquotes
@@ -554,36 +545,44 @@ Content Cell  | Content Cell
 
 
 
-## Exercise
-
-在「油電業薪資近9萬，是教服業的4倍?」標題下加上新聞連結：
-
-- [自由時報](https://tw.news.yahoo.com/%E6%B2%B9%E9%9B%BB%E6%A5%AD%E8%96%AA%E8%B3%87%E8%BF%919%E8%90%AC-%E6%95%99%E6%9C%8D%E6%A5%AD%E7%9A%844%E5%80%8D-221333602.html)
-- [經濟部](http://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&menu_id=40&news_id=35719)
-
 
 # R Code Chunks
 ```{r R Code Chunks}
 ```
 
 
-
 ## Overview
 
-- Named R code chunk. 
+R code will be evaluated and printed
 
-    <pre class="markdown"><code>&#96;&#96;&#96;{r plot}
-    summary(cars)
-    plot(cars)
-    &#96;&#96;&#96;
-    </code></pre>
+
+<!--pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r}-->
+<pre class="markdown"><code>&#96;&#96;&#96;{r}
+summary(cars$dist)
+&#96;&#96;&#96;
+</code></pre>
+
+
+```{r}
+summary(cars$dist)
+```
+
+
+
+## Named R code chunk. 
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r plot}
+summary(cars)
+plot(cars)
+&#96;&#96;&#96;
+</code></pre>
 
 - Easy Navigation in RStudio  
 
     ![chunk name](images/chunk_name.png)
 
 
-## Basic Chunk Option
+## Basic Chunk Options
 
 - `echo`(TRUE): whether to include R source code in the output file
 - `eval`(TRUE): whether to evaluate the code chunk
@@ -591,13 +590,22 @@ Content Cell  | Content Cell
 - `include`(TRUE): if include=FALSE, nothing will be written into the output document, but the code is still evaluated and plot files are generated
 - `warning`(TRUE): whether to preserve warnings in the output 
 
-<pre class="markdown"><code>&#96;&#96;&#96;{r plot, include=FALSE}
-# Disable all output 
-&#96;&#96;&#96;
-</code></pre>
+Set global chunk options:
 
-<pre class="markdown"><code>&#96;&#96;&#96;{r plot, echo=FALSE}
-# Hide source code
+```r
+knitr::opts_chunk$set()
+```
+
+## Exercise
+
+在「油電業薪資近9萬，是教服業的4倍?」之前設定Global Chunk Options：
+
+<pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r, include=FALSE}
+# load("data/salary.RData")
+data(salary, package="DSC2014Tutorial")
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE,
+                      message = FALSE)
 &#96;&#96;&#96;
 </code></pre>
 
@@ -612,6 +620,24 @@ Content Cell  | Content Cell
 
 <pre class="markdown"><code>&#96;&#96;&#96;{r dev='svg', fig.path='myplot', fig.height=8}
 plot(iris)
+&#96;&#96;&#96;
+</code></pre>
+
+
+## Exercise
+
+將前面課程練習過的圖加在「行業別每人每月薪資 - Top 3 & Last 3」之下：
+
+<pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r plot, dpi=75, fig.width=10}
+a = order(salary_2013$每人每月薪資)
+salary_news = matrix(salary_2013$每人每月薪資[c(head(a,3),tail(a,3))],ncol = 6)
+colnames(salary_news) = salary_2013$行業[c(head(a,3),tail(a,3))]
+
+# Mac顯示中文需設置字型
+# http://equation85.github.io/blog/graph-font-of-r-in-mac-os-x/
+par(family='STKaiti')
+mp = barplot(salary_news) #x軸座標
+text(mp,10000,salary_news) #標註薪資
 &#96;&#96;&#96;
 </code></pre>
 
@@ -648,17 +674,22 @@ knitr::kable(head(women))
 
 </div>
 
+
+## Exercise
+
+在「行業別每人每月薪資總表」下加上表格：
+
+<pre class="prettyprint lang-r"><code>&#96;&#96;&#96;{r results='asis'}
+index = order(salary_2013$每人每月薪資, decreasing = TRUE)
+knitr::kable(salary_2013[index, c("行業", "每人每月薪資")], 
+             row.names=FALSE)
+&#96;&#96;&#96;
+</code></pre>
+
+
 ## Caching
 
 - `cache`(FALSE): whether to cache a code chunk to improve proformance for expensive computing
-
-- Caching globally for a document 
-
-
-<pre class="markdown"><code>&#96;&#96;&#96;{r setup, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
-&#96;&#96;&#96;
-</code></pre>
 
 - If you run into problems with cached output, you can always clear the knitr cache by removing the folder named with a `_cache` suffix.
 
@@ -677,20 +708,65 @@ whoami
 </code></pre>
 
 
-## Exercise
+## Inline R Code
 
-結合適當的圖表和文字敘述，
-將從行業別每人每月薪資資料中觀察到的現象完成一份完整的報告。
 
-- [報告範例](http://rpubs.com/mansun_kuo/24482)
+![Markdown Inline](images/markdownInline.png)
+
+
+<br>
+
+```r
+I counted `r 1+1` red trucks on the highway.
+```
+
+
+## Exercise 
+
+使用Inline R Code在圖形下方加上一些基本的敘述：
+
+<pre class="prettyprint lang-r"><code>從上方圖表可以清楚地看到，&#96;r colnames(salary_news)[which.max(salary_news)]&#96;每人每月薪資為
+&#96;r salary_news[which.max(salary_news)]&#96;元，
+是所有行業別中最高的，
+第二名&#96;r colnames(salary_news)[length(salary_news)-1]&#96;也有
+&#96;r salary_news[length(salary_news)-1]&#96;，
+第三名&#96;r colnames(salary_news)[length(salary_news)-2]&#96;較第二名少了
+&#96;r salary_news[length(salary_news)-1]  - salary_news[length(salary_news)-2]&#96;，但還是有
+&#96;r salary_news[length(salary_news)-2]&#96;元。
+
+整體薪資水準較為不佳則是&#96;r colnames(salary_news)[1]&#96;
+、&#96;r colnames(salary_news)[2]&#96;和&#96;r colnames(salary_news)[3]&#96;，
+其中&#96;r colnames(salary_news)[1]&#96;每人每月薪資是
+&#96;r salary_news[1]&#96;，
+約僅有&#96;r colnames(salary_news)[which.max(salary_news)]&#96;的
+&#96;r round(salary_news[1] / salary_news[length(salary_news)] * 100)&#96;%。
+</code></pre>
+
+
+
+## Result
+
+- [Report](http://rpubs.com/mansun_kuo/24482)
 - [Rmd File](https://github.com/mansunkuo/rmd_tutorial/blob/master/r_markdown_exercise.Rmd)
-- 小提示
-    - 利用knitr::opts_chunk$set將整份報告的warning設為FALSE
-      來處理中文問題
-    - 繪製"行業別每人每月薪資 - Top 3 & Last 3"圖形時，
-      設定dpi=75, fig.width=10
-    - 試著隱藏source code
-    
+
+Extra: Generate word document with **Knit Word**
+
+<div class="notes">
+Using following commands to find the paths if you don't have internet connection:
+
+- 報告範例  
+```r
+system.file("Visualization/slide3/r_markdown_exercise.html", 
+    package="DSC2014Tutorial")
+```
+
+- Rmd File  
+```r
+system.file("Visualization/slide3/r_markdown_exercise.Rmd", 
+    package="DSC2014Tutorial")
+```
+
+</div>
 
 
 # Deployment
@@ -723,15 +799,11 @@ Deploy your HTML document on the web.
 ```{r Miscellaneous}
 ```
 
+## How to Use
 
-## Interactive Documents
-
-It’s possible to embed a Shiny application within a document.
-
-<div class="columns-2">
-<img src="images/shiny-cars-table.gif" alt="hack_yaml" height="400">
-<img src="images/shiny-hist-plot.gif" alt="hack_yaml" height="400">
-</div>
+- Using R markdown to generate reproducible report
+- Slides + R Markdown
+- Config file + R Markdown
 
 
 ## About Document Content
@@ -800,6 +872,15 @@ mtcars %>%
     set_options(hover_duration = 250)
 ```
 
+
+## Interactive Documents
+
+It’s possible to embed a Shiny application within a document.
+
+<div class="columns-2">
+<img src="images/shiny-cars-table.gif" alt="hack_yaml" height="400">
+<img src="images/shiny-hist-plot.gif" alt="hack_yaml" height="400">
+</div>
 
 
 ## References
