@@ -1,7 +1,9 @@
 An Introduction to R Markdown
 ============
 
-R markdown tutorial
+Slides of R markdown tutorial in [2014台灣資料科學愛好者年會](http://twconf.data-sci.org/)
+
+http://mansunkuo.github.io/rmd_tutorial/
 
 ## Files
 
